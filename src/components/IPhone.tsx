@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-function IPhone(props) {
+function IPhone(props: any) {
   const { nodes, materials } = useGLTF("/models/scene.glb");
 
   const texture = useTexture(props.model.img);

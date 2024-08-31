@@ -10,9 +10,9 @@ import { useGSAP } from "@gsap/react";
 import { pauseImg, playImg, replayImg } from "@/utils";
 
 const VideoCarousel = () => {
-  const videoRef = useRef([]);
-  const videoDivRef = useRef([]);
-  const videoSpanRef = useRef([]);
+  const videoRef = useRef<any>([]);
+  const videoDivRef = useRef<any>([]);
+  const videoSpanRef = useRef<any>([]);
 
   const [video, setVideo] = useState({
     startPlay: false,
@@ -22,10 +22,11 @@ const VideoCarousel = () => {
     isLastVideo: false,
   });
 
-  const [loadedData, setLoadedData] = useState([]);
+  const [loadedData, setLoadedData] = useState<any>([]);
   const { isPlaying, startPlay, isEnd, videoId, isLastVideo } = video;
 
-  const handleLoadMetadata = (el) => setLoadedData((pre) => [...pre, el]);
+  const handleLoadMetadata = (el: any) =>
+    setLoadedData((pre: any) => [...pre, el]);
 
   useGSAP(() => {
     gsap.to(".video", {
@@ -50,9 +51,11 @@ const VideoCarousel = () => {
   useEffect(() => {
     if (loadedData.length < hightlightsSlides.length) return;
     if (!isPlaying) {
+      //@ts-ignore
       videoRef.current[videoId].pause();
       return;
     }
+    //@ts-ignore
     if (startPlay) videoRef.current[videoId].play();
   }, [videoId, startPlay, loadedData, isPlaying]);
 
@@ -87,6 +90,7 @@ const VideoCarousel = () => {
     });
     const animUpdate = () => {
       anim.progress(
+        //@ts-ignore
         videoRef.current[videoId].currentTime /
           hightlightsSlides[videoId].videoDuration,
       );
@@ -171,7 +175,7 @@ const VideoCarousel = () => {
       </div>
       <div className="relative flex-center mt-10">
         <div className="flex-center py-5 px-7 bg-gray-300 backdrop-blur rounded-full">
-          {videoRef.current.map((_, i) => (
+          {videoRef.current.map((_: any, i: number) => (
             <span
               key={i}
               className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"

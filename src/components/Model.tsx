@@ -103,7 +103,11 @@ const Model = () => {
                 pointerEvents: "none",
               }}
               //@ts-ignore
-              eventSource={document.getElementById("root")}
+              eventSource={
+                typeof document !== "undefined"
+                  ? document.getElementById("root")
+                  : null
+              }
             >
               <View.Port />
             </Canvas>

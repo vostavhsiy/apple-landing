@@ -6,11 +6,14 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const Hero = () => {
-  const [videoSrc, setVideoSrc] = useState(
-    window.innerWidth > 760 ? heroVideo : smallHeroVideo,
-  );
+  const [videoSrc, setVideoSrc] = useState(heroVideo);
+
+  useEffect(() => {
+    setVideoSrc(window.innerWidth > 760 ? heroVideo : smallHeroVideo);
+  }, []);
 
   const handleWindowResize = () => {
+    if (typeof window === "undefined") return;
     if (window.innerWidth > 760) {
       setVideoSrc(heroVideo);
     } else {

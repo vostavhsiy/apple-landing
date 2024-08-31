@@ -22,11 +22,12 @@ const VideoCarousel = () => {
     isLastVideo: false,
   });
 
-  const [loadedData, setLoadedData] = useState<any>([]);
+  const [loadedData, setLoadedData] = useState<any[]>([]);
   const { isPlaying, startPlay, isEnd, videoId, isLastVideo } = video;
 
-  const handleLoadMetadata = (el: any) =>
-    setLoadedData((pre: any) => [...pre, el]);
+  const handleLoadMetadata = (el: any) => {
+    setLoadedData((pre) => [...pre, el]);
+  };
 
   useGSAP(() => {
     gsap.to(".video", {

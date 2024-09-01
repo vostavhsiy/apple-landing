@@ -29,7 +29,10 @@ const ModelView: FC<Props> = ({
   return (
     <View
       id={type}
-      className={clsx("w-full h-full absolute", index === 2 && "-right-full")}
+      className={clsx(
+        "w-full h-full absolute cursor-grab active:cursor-grabbing",
+        index === 2 && "-right-full",
+      )}
     >
       <ambientLight intensity={0.3} />
       <OrbitControls

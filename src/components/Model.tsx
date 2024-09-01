@@ -8,6 +8,8 @@ import { View } from "@react-three/drei";
 import ModelView from "@/components/ModelView";
 
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 import { useGSAP } from "@gsap/react";
 
 const Model = () => {
